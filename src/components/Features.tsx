@@ -1,26 +1,17 @@
 import { motion } from "framer-motion";
-import { Shield, Banknote, Clock, Heart } from "lucide-react";
 
-const features = [
+const stats = [
   {
-    icon: Shield,
-    title: "Shariah-Compliant",
-    description: "Every transaction is structured without interest (riba). Approved by scholars, trusted by the community.",
+    value: "33%",
+    description: "UK adults used BNPL in 2025",
   },
   {
-    icon: Banknote,
-    title: "Zero Interest",
-    description: "Split your payments into manageable instalments with absolutely no interest charges. Ever.",
+    value: "4M+",
+    description: "Muslims in the UK",
   },
   {
-    icon: Clock,
-    title: "Flexible Plans",
-    description: "Choose payment schedules that work for you — weekly, bi-weekly, or monthly instalments.",
-  },
-  {
-    icon: Heart,
-    title: "Built for You",
-    description: "Designed specifically for Muslims who want to shop ethically without compromising their values.",
+    value: "0",
+    description: "Dedicated Shariah-compliant BNPL solutions for everyday consumers in the UK",
   },
 ];
 
@@ -46,31 +37,28 @@ const Features = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Finance that aligns with your faith
+            Finance that puts ethics first
           </h2>
           <p className="text-muted-foreground text-lg max-w-lg mx-auto">
-            Qist is built from the ground up to respect Islamic principles of ethical commerce.
+            Qist is built from the ground up to respect principles of transparent, ethical commerce.
           </p>
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-6"
           variants={container}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
         >
-          {features.map((feature) => (
+          {stats.map((stat) => (
             <motion.div
-              key={feature.title}
+              key={stat.description}
               variants={item}
-              className="bg-card rounded-2xl p-8 border border-border hover:border-primary/30 transition-colors group"
+              className="bg-card rounded-2xl p-8 border border-border hover:border-primary/30 transition-colors text-center"
             >
-              <div className="h-12 w-12 rounded-xl bg-accent flex items-center justify-center mb-5 group-hover:bg-primary/10 transition-colors">
-                <feature.icon className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="font-body font-semibold text-foreground text-lg mb-2">{feature.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
+              <p className="font-display text-4xl sm:text-5xl font-bold text-primary mb-3">{stat.value}</p>
+              <p className="text-muted-foreground text-sm leading-relaxed">{stat.description}</p>
             </motion.div>
           ))}
         </motion.div>

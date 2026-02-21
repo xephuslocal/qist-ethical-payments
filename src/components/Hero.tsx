@@ -5,7 +5,8 @@ import { z } from "zod";
 import heroPhone from "@/assets/hero-phone.png";
 
 const emailSchema = z.string().trim().email("Please enter a valid email").max(255);
-const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSe4ZbHJK6P_8uC9qCl1j7XAs4UyLg-Ii5jNubPwsCb3DnP6Mw/formResponse";
+const FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSe4ZbHJK6P_8uC9qCl1j7XAs4UyLg-Ii5jNubPwsCb3DnP6Mw/formResponse";
 
 const Hero = () => {
   const [email, setEmail] = useState("");
@@ -22,7 +23,7 @@ const Hero = () => {
     setError("");
 
     const formData = new FormData();
-    formData.append("entry.219565874", result.data);
+    formData.append("entry.1108286257", result.data);
 
     try {
       await fetch(FORM_URL, {
@@ -43,8 +44,22 @@ const Hero = () => {
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="islamic-pattern" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-              <path d="M40 0 L80 40 L40 80 L0 40 Z" fill="none" stroke="currentColor" strokeWidth="1" className="text-primary" />
-              <circle cx="40" cy="40" r="15" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-primary" />
+              <path
+                d="M40 0 L80 40 L40 80 L0 40 Z"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1"
+                className="text-primary"
+              />
+              <circle
+                cx="40"
+                cy="40"
+                r="15"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="0.5"
+                className="text-primary"
+              />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#islamic-pattern)" />
@@ -72,8 +87,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
             >
-              Modern payments meets{" "}
-              <span className="text-primary">ethical finance</span>
+              Modern payments meets <span className="text-primary">ethical finance</span>
             </motion.h1>
 
             <motion.p
@@ -82,7 +96,8 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
             >
-              We're solving buy now pay later for the Muslim community. No interest. No hidden fees. Just honest, halal payments.
+              We're solving buy now pay later for the Muslim community. No interest. No hidden fees. Just honest, halal
+              payments.
             </motion.p>
 
             <motion.div
@@ -101,7 +116,10 @@ const Hero = () => {
                     <input
                       type="email"
                       value={email}
-                      onChange={(e) => { setEmail(e.target.value); setError(""); }}
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                        setError("");
+                      }}
                       placeholder="Enter your email"
                       className="w-full h-12 px-5 rounded-full border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring text-sm"
                     />

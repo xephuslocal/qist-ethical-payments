@@ -1,8 +1,27 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle } from "lucide-react";
+import { z } from "zod";
+import patternAccent from "@/assets/pattern-accent.png";
+
+const emailSchema = z.string().trim().email("Please enter a valid email").max(255);
 
 const CTA = () => {
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const result = emailSchema.safeParse(email);
+    if (!result.success) {
+      setError(result.error.errors[0].message);
+      return;
+    }
+    setError("");
+    setSubmitted(true);
+  };
+
   return (
     <section className="py-24">
       <div className="container">
@@ -13,12 +32,19 @@ const CTA = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          {/* Subtle geometric accent */}
-          <div className="absolute top-0 right-0 w-64 h-64 opacity-5">
-            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-              <path d="M100 0 L200 100 L100 200 L0 100 Z" fill="white" />
-            </svg>
-          </div>
+          {/* Decorative pattern */}
+          <img
+            src={patternAccent}
+            alt=""
+            aria-hidden="true"
+            className="absolute -top-16 -right-16 w-56 h-56 opacity-10 rotate-12"
+          />
+          <img
+            src={patternAccent}
+            alt=""
+            aria-hidden="true"
+            className="absolute -bottom-12 -left-12 w-40 h-40 opacity-[0.07] -rotate-45"
+          />
 
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-secondary-foreground mb-4 relative z-10">
             Ready to shop ethically?
@@ -26,13 +52,35 @@ const CTA = () => {
           <p className="text-secondary-foreground/70 text-lg max-w-md mx-auto mb-8 relative z-10">
             Join thousands of Muslims who are choosing a better way to pay.
           </p>
-          <Button
-            size="lg"
-            className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 rounded-full px-8 py-6 text-base font-semibold relative z-10"
-          >
-            Join the Waitlist
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
+
+          <div className="relative z-10">
+            {submitted ? (
+              <div className="flex items-center justify-center gap-3 text-primary-foreground font-medium">
+                <CheckCircle className="h-5 w-5" />
+                You're on the list! We'll be in touch soon.
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                <div className="flex-1">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => { setEmail(e.target.value); setError(""); }}
+                    placeholder="Enter your email"
+                    className="w-full h-12 px-5 rounded-full bg-secondary-foreground/10 border border-secondary-foreground/20 text-secondary-foreground placeholder:text-secondary-foreground/40 focus:outline-none focus:ring-2 focus:ring-secondary-foreground/30 text-sm"
+                  />
+                  {error && <p className="text-destructive-foreground text-xs mt-1.5 ml-4">{error}</p>}
+                </div>
+                <button
+                  type="submit"
+                  className="h-12 px-6 rounded-full bg-primary-foreground text-primary font-semibold text-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shrink-0"
+                >
+                  Join Waitlist
+                  <ArrowRight className="h-4 w-4" />
+                </button>
+              </form>
+            )}
+          </div>
         </motion.div>
       </div>
     </section>

@@ -36,7 +36,7 @@ const Features = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
+          <h2 className="font-display text-3xl sm:text-4xl font-bold text-primary mb-4">
             Finance that puts ethics first
           </h2>
           <p className="text-muted-foreground text-lg max-w-lg mx-auto">

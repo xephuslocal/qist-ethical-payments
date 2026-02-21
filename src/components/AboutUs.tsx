@@ -11,7 +11,7 @@ const AboutUs = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-6">
+          <h2 className="font-display text-3xl sm:text-4xl font-bold text-primary mb-6">
             About Us
           </h2>
           <div className="space-y-4 text-muted-foreground text-base sm:text-lg leading-relaxed">

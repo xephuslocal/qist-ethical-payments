@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import qistLogo from "@/assets/qist-logo.jpeg";
+import qistLogo from "@/assets/qist-logo.png";
 
 const Navbar = () => {
   return (

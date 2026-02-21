@@ -1,26 +1,10 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle } from "lucide-react";
-import { z } from "zod";
+import { ArrowRight } from "lucide-react";
 import heroPhone from "@/assets/hero-phone.png";
 
-const emailSchema = z.string().trim().email("Please enter a valid email").max(255);
+const WAITLIST_URL = "https://docs.google.com/forms/d/e/1FAIpQLSe4ZbHJK6P_8uC9qCl1j7XAs4UyLg-Ii5jNubPwsCb3DnP6Mw/viewform";
 
 const Hero = () => {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState("");
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const result = emailSchema.safeParse(email);
-    if (!result.success) {
-      setError(result.error.errors[0].message);
-      return;
-    }
-    setError("");
-    setSubmitted(true);
-  };
 
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
@@ -76,32 +60,15 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.45, ease: "easeOut" }}
             >
-              {submitted ? (
-                <div className="flex items-center gap-3 text-primary font-medium">
-                  <CheckCircle className="h-5 w-5" />
-                  You're on the list! We'll be in touch soon.
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md">
-                  <div className="flex-1">
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => { setEmail(e.target.value); setError(""); }}
-                      placeholder="Enter your email"
-                      className="w-full h-12 px-5 rounded-full border border-border bg-card text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring text-sm"
-                    />
-                    {error && <p className="text-destructive text-xs mt-1.5 ml-4">{error}</p>}
-                  </div>
-                  <button
-                    type="submit"
-                    className="h-12 px-6 rounded-full bg-primary text-primary-foreground font-medium text-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shrink-0"
-                  >
-                    Join Our Waiting List
-                    <ArrowRight className="h-4 w-4" />
-                  </button>
-                </form>
-              )}
+              <a
+                href={WAITLIST_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="h-12 px-8 rounded-full bg-primary text-primary-foreground font-medium text-sm hover:opacity-90 transition-opacity inline-flex items-center justify-center gap-2"
+              >
+                Join Our Waiting List
+                <ArrowRight className="h-4 w-4" />
+              </a>
             </motion.div>
           </div>
 

@@ -49,7 +49,7 @@ const Features = () => {
           variants={container}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
         >
           {stats.map((stat) => (
             <motion.div

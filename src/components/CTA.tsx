@@ -5,7 +5,8 @@ import { z } from "zod";
 import patternAccent from "@/assets/pattern-accent.png";
 
 const emailSchema = z.string().trim().email("Please enter a valid email").max(255);
-const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSe4ZbHJK6P_8uC9qCl1j7XAs4UyLg-Ii5jNubPwsCb3DnP6Mw/formResponse";
+const FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSe4ZbHJK6P_8uC9qCl1j7XAs4UyLg-Ii5jNubPwsCb3DnP6Mw/formResponse";
 
 const CTA = () => {
   const [email, setEmail] = useState("");
@@ -22,7 +23,7 @@ const CTA = () => {
     setError("");
 
     const formData = new FormData();
-    formData.append("entry.219565874", result.data);
+    formData.append("entry.1108286257", result.data);
 
     try {
       await fetch(FORM_URL, {
@@ -79,7 +80,10 @@ const CTA = () => {
                   <input
                     type="email"
                     value={email}
-                    onChange={(e) => { setEmail(e.target.value); setError(""); }}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      setError("");
+                    }}
                     placeholder="Enter your email"
                     className="w-full h-12 px-5 rounded-full bg-secondary-foreground/10 border border-secondary-foreground/20 text-secondary-foreground placeholder:text-secondary-foreground/40 focus:outline-none focus:ring-2 focus:ring-secondary-foreground/30 text-sm"
                   />

@@ -46,7 +46,7 @@ const CTA = () => {
             className="absolute -bottom-12 -left-12 w-40 h-40 opacity-[0.07] -rotate-45"
           />
 
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-secondary-foreground mb-4 relative z-10">
+          <h2 className="font-display text-3xl sm:text-4xl font-bold text-primary-foreground mb-4 relative z-10">
             Ready to shop ethically?
           </h2>
           <p className="text-secondary-foreground/70 text-lg max-w-md mx-auto mb-8 relative z-10">

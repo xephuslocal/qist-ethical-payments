@@ -48,7 +48,7 @@ const Hero = () => {
             >
               <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-accent px-4 py-1.5 mb-8">
                 <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-                <span className="text-sm font-medium text-accent-foreground">Shariah-compliant payments</span>
+                <span className="text-sm font-medium text-accent-foreground">We're levelling up Buy Now Pay Later</span>
               </div>
             </motion.div>
 
@@ -97,7 +97,7 @@ const Hero = () => {
                     type="submit"
                     className="h-12 px-6 rounded-full bg-primary text-primary-foreground font-medium text-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shrink-0"
                   >
-                    Get Early Access
+                    Join Our Waiting List
                     <ArrowRight className="h-4 w-4" />
                   </button>
                 </form>
